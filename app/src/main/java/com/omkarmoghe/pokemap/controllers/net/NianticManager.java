@@ -72,6 +72,8 @@ public class NianticManager {
 
     private static final NianticManager instance = new NianticManager();
 
+    private static final int REQUEST_INTERVAL_MS = 5000;
+
     private Handler mHandler;
     private AuthInfo mAuthInfo;
     private NianticService mNianticService;
@@ -332,9 +334,9 @@ public class NianticManager {
             public void run() {
                 try {
                     if (mPokemonGo != null && NianticManager.this.currentBatchCall == myCurrentBatch) {
-                        Thread.sleep(133);
+                        Thread.sleep(REQUEST_INTERVAL_MS / 2);
                         mPokemonGo.setLocation(lat, longitude, alt);
-                        Thread.sleep(133);
+                        Thread.sleep(REQUEST_INTERVAL_MS / 2);
                         List<CatchablePokemon> catchablePokemons = mPokemonGo.getMap().getCatchablePokemon();
                         if (NianticManager.this.currentBatchCall == myCurrentBatch) EventBus.getDefault().post(new CatchablePokemonEvent(catchablePokemons, lat, longitude));
                     }
