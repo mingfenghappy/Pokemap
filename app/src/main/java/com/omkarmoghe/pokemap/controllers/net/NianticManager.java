@@ -399,9 +399,9 @@ public class NianticManager {
 
                     if (mPokemonGo != null && NianticManager.this.currentBatchCall == myCurrentBatch) {
 
-                        Thread.sleep(133);
+                        Thread.sleep(REQUEST_INTERVAL_MS / 2);
                         mPokemonGo.setLocation(lat, longitude, alt);
-                        Thread.sleep(133);
+                        Thread.sleep(REQUEST_INTERVAL_MS / 2);
                         Collection<Pokestop> pokestops = mPokemonGo.getMap().getMapObjects().getPokestops();
                         if (NianticManager.this.currentBatchCall == myCurrentBatch) EventBus.getDefault().post(new PokestopsEvent(pokestops, lat, longitude));
                     }
@@ -433,9 +433,9 @@ public class NianticManager {
 
                 if (mPokemonGo != null && NianticManager.this.currentBatchCall == myCurrentBatch) {
 
-                    Thread.sleep(133);
+                    Thread.sleep(REQUEST_INTERVAL_MS / 2);
                     mPokemonGo.setLocation(latitude, longitude, alt);
-                    Thread.sleep(133);
+                    Thread.sleep(REQUEST_INTERVAL_MS / 2);
                     Collection<FortDataOuterClass.FortData> gyms = mPokemonGo.getMap().getMapObjects().getGyms();
                     if (NianticManager.this.currentBatchCall == myCurrentBatch) EventBus.getDefault().post(new GymsEvent(gyms, latitude, longitude));
                 }
