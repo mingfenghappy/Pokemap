@@ -218,6 +218,8 @@ public class MainActivity extends BaseActivity {
             } else {
                 Snackbar.make(findViewById(R.id.root), getString(R.string.toast_login_error), Snackbar.LENGTH_LONG).show();
             }
+        } else {
+            Snackbar.make(findViewById(R.id.root), getString(R.string.toast_login_error), Snackbar.LENGTH_LONG).show();
         }
     }
 
